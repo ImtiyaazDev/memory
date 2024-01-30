@@ -1,23 +1,16 @@
 import PlayerBalloons from "./../features/player/PlayerBalloons";
 import PlayerRocket from "./../features/player/PlayerRocket";
+import Blur from "./Blur";
 import Button from "./Button";
 import InputPlayer from "./InputPlayer";
 
 export default function Homepage() {
 	return (
 		<div className="radial-lg relative grid h-screen w-screen grid-rows-[80px_1fr] overflow-hidden">
-			<div className="radial-sm-70 absolute left-1/2 top-3/4 aspect-square w-[650px] rounded-full blur-3xl">
-				&nbsp;
-			</div>
-			<div className="radial-sm-30 absolute left-1/2 top-3/4 aspect-square w-[650px] rounded-full blur-3xl">
-				&nbsp;
-			</div>
-			<div className="radial-sm absolute -top-1/2 left-1/2 z-0 aspect-square w-[800px] rounded-full blur-3xl">
-				&nbsp;
-			</div>
-			<div className="radial-sm absolute bottom-1/2 right-3/4 z-0 aspect-square w-[620px] rounded-full blur-3xl">
-				&nbsp;
-			</div>
+      <Blur type="large"/>
+      <Blur type="small"/>
+      <Blur type="normalLg"/>
+      <Blur type="normalSm"/>
 
 			<header className="ml-auto flex items-center px-6 py-3">
 				<Button type="danger">Exit Game</Button>
@@ -35,12 +28,12 @@ export default function Homepage() {
 					<div className="flex h-1/2 w-1/2 items-center justify-around gap-4 px-4 py-2">
 						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
 							<PlayerBalloons styles="self-center" />
-							<InputPlayer/>
+							<InputPlayer placeholder="Name of Player 1" />
 						</div>
 
 						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
 							<PlayerRocket styles="self-center" />
-							<InputPlayer/>
+							<InputPlayer placeholder="Name of Player 2" />
 						</div>
 					</div>
 
