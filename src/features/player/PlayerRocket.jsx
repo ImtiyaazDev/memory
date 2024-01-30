@@ -1,4 +1,4 @@
-export default function PlayerRocket() {
+export default function PlayerRocket({styles}) {
 	return (
 		<svg
 			width="192"
@@ -6,6 +6,7 @@ export default function PlayerRocket() {
 			viewBox="0 0 192 208"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			className={styles}
 		>
 			<path
 				d="M147.569 189.547C144.907 199.62 139.381 198.22 132.561 196.486C128.881 195.551 123.409 192.759 119.378 189.516C115.94 186.746 113.552 183.644 114.229 181.082C115.7 175.519 131.066 174.607 137.884 176.339C143.952 177.879 148.997 179.161 148.162 186.519C148.037 187.541 147.839 188.552 147.569 189.547Z"
