@@ -1,8 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import CardPlay from "./features/cards/CardPlay";
+
+
+import Board from "./features/game/Board";
 // import AppLayout from "./ui/AppLayout";
 import Homepage from "./ui/Homepage";
+
 
 const router = createBrowserRouter([
 	{
@@ -11,7 +14,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/game-play",
-		element: <CardPlay />
+		element: <Board />
 	}
 ]);
 
