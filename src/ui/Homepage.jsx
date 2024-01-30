@@ -35,14 +35,14 @@ export default function Homepage() {
 					<div className="flex h-1/2 w-1/2 items-center justify-around gap-4 px-4 py-2">
 						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
 							<PlayerBalloons styles="self-center" />
-							<form className="gap- flex justify-between">
+							<form className="flex justify-between">
 								<Input placeholder="Name of Player 1" />
 							</form>
 						</div>
 
 						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
 							<PlayerRocket styles="self-center" />
-							<form className="gap- flex justify-between">
+							<form className="flex justify-between">
 								<Input placeholder="Name of Player 2" />
 							</form>
 						</div>
