@@ -1,6 +1,7 @@
 import PlayerBalloons from "./../features/player/PlayerBalloons";
 import PlayerRocket from "./../features/player/PlayerRocket";
 import Button from "./Button";
+import Input from "./Input";
 
 export default function Homepage() {
 	return (
@@ -35,22 +36,14 @@ export default function Homepage() {
 						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
 							<PlayerBalloons styles="self-center" />
 							<form className="gap- flex justify-between">
-								<input
-									type="text"
-									placeholder="Name of Player 1"
-									className="focus:ring-blue-specnoDark w-full rounded-lg px-4 py-2 font-sans text-neutral-600 outline-0 focus:ring-4"
-								/>
+								<Input placeholder="Name of Player 1" />
 							</form>
 						</div>
 
 						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
 							<PlayerRocket styles="self-center" />
 							<form className="gap- flex justify-between">
-								<input
-									type="text"
-									placeholder="Name of Player 2"
-									className="focus:ring-blue-specnoDark w-full rounded-lg px-4 py-2 font-sans text-neutral-600 outline-0 focus:ring-4"
-								/>
+								<Input placeholder="Name of Player 2" />
 							</form>
 						</div>
 					</div>
