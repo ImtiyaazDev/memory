@@ -1,10 +1,12 @@
-import InputPlayer from "./../features/player/InputPlayer";
-import PlayerBalloons from "./../features/player/PlayerBalloons";
-import PlayerRocket from "./../features/player/PlayerRocket";
+import { useState } from "react";
+
 import Blur from "./Blur";
 import Button from "./Button";
+import Modal from "./Modal";
 
 export default function Homepage() {
+	const [isActive, setIsActive] = useState(false);
+
 	return (
 		<div className="radial-lg relative grid h-screen w-screen grid-rows-[80px_1fr] overflow-hidden">
 			<Blur type="large" />
@@ -25,19 +27,18 @@ export default function Homepage() {
 						Are you ready to play?
 					</h1>
 
-					<div className="flex h-1/2 w-1/2 items-center justify-around gap-4 px-4 py-2">
-						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
-							<PlayerBalloons styles="self-center" />
-							<InputPlayer placeholder="Name of Player 1" />
-						</div>
-
-						<div className="flex h-full w-1/2 flex-col justify-around px-4 py-2">
-							<PlayerRocket styles="self-center" />
-							<InputPlayer placeholder="Name of Player 2" />
-						</div>
+					<div className="flex h-1/2 w-1/2 items-center gap-9 px-4 py-2">
+						{isActive && <Modal />}
 					</div>
 
-					<Button type="primary">Let&apos;s Play</Button>
+					{!isActive && (
+						<Button
+							type="primary"
+							onClick={() => setIsActive((show) => !show)}
+						>
+							Start Here
+						</Button>
+					)}
 				</div>
 			</main>
 		</div>
