@@ -1,5 +1,6 @@
 import PlayerBalloons from "./../features/player/PlayerBalloons";
 import PlayerRocket from "./../features/player/PlayerRocket";
+import Button from "./Button";
 
 export default function Homepage() {
 	return (
@@ -18,9 +19,7 @@ export default function Homepage() {
 			</div>
 
 			<header className="ml-auto flex items-center px-6 py-3">
-				<button className="bg-red-specno z-50 rounded-lg px-3 py-2 font-medium text-white transition-all duration-300 ease-in hover:bg-red-700">
-					Exit Game
-				</button>
+				<Button type="danger">Exit Game</Button>
 			</header>
 
 			<main className="z-50">
@@ -56,9 +55,7 @@ export default function Homepage() {
 						</div>
 					</div>
 
-					<button className="bg-green-specno rounded-lg px-10 py-3 text-xl font-semibold text-white transition-all duration-300 ease-in hover:bg-green-500 ">
-						Let&apos;s Play
-					</button>
+					<Button type="primary">Let&apos;s Play</Button>
 				</div>
 			</main>
 		</div>
