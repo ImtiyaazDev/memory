@@ -20,7 +20,8 @@ module.exports = {
 		"no-duplicate-imports": "error",
 		"arrow-body-style": ["error", "always"],
 		"default-case": "error",
-		"eqeqeq": "error",
-		"func-style": ["error", "declaration", { allowArrowFunctions: true }]
+		eqeqeq: "error",
+		"func-style": ["error", "declaration", { allowArrowFunctions: true }],
+		"react/prop-types": "off"
 	}
 };
