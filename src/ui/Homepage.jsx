@@ -1,16 +1,16 @@
+import InputPlayer from "./../features/player/InputPlayer";
 import PlayerBalloons from "./../features/player/PlayerBalloons";
 import PlayerRocket from "./../features/player/PlayerRocket";
 import Blur from "./Blur";
 import Button from "./Button";
-import InputPlayer from "./InputPlayer";
 
 export default function Homepage() {
 	return (
 		<div className="radial-lg relative grid h-screen w-screen grid-rows-[80px_1fr] overflow-hidden">
-      <Blur type="large"/>
-      <Blur type="small"/>
-      <Blur type="normalLg"/>
-      <Blur type="normalSm"/>
+			<Blur type="large" />
+			<Blur type="small" />
+			<Blur type="normalLg" />
+			<Blur type="normalSm" />
 
 			<header className="ml-auto flex items-center px-6 py-3">
 				<Button type="danger">Exit Game</Button>
