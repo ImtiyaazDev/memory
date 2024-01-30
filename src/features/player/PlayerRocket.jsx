@@ -1,8 +1,8 @@
-export default function PlayerRocket({styles}) {
+export default function PlayerRocket({ styles }) {
 	return (
 		<svg
-			width="192"
-			height="208"
+			width="180"
+			height="222"
 			viewBox="0 0 192 208"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
