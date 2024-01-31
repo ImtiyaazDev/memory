@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
 import PlayerBox from "../player/PlayerBox";
+import Header from "./../../ui/Header";
 import PlayerBalloons from "./../player/PlayerBalloons";
 import PlayerRocket from "./../player/PlayerRocket";
 import { deck } from "./Deck";
-import Header from "./../../ui/Header";
 import SingleCard from "./SingleCard";
 
 export default function Board() {
@@ -53,7 +53,7 @@ export default function Board() {
 						console.log(prevCards);
 						return prevCards.map((card) => {
 							if (card.suit === choiceOne.suit) {
-								return { ...card, isMatched: true };
+								return { ...card, isMatched: true, src: null };
 							} else {
 								return card;
 							}
@@ -119,7 +119,6 @@ export default function Board() {
 					playerIcon={<PlayerBalloons />}
 					playerNumber={1}
 				/>
-				{/* Main game play */}
 				<div className="grid grid-cols-9 grid-rows-6 justify-items-center gap-y-4 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
 					{cards.map((card) => (
 						<SingleCard
