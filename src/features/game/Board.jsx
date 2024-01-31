@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Blur from "../../ui/Blur";
@@ -17,8 +16,6 @@ export default function Board() {
 	const [choiceTwo, setChoiceTwo] = useState(null);
 	const [disableCard, setDisableCard] = useState(false);
 	const navigate = useNavigate();
-	const name = useSelector((store) => store.player);
-	console.log(name);
 
 	function handleExit() {
 		navigate("/");
@@ -50,7 +47,6 @@ export default function Board() {
 					choiceTwo.src.split("/").includes("joker")
 				) {
 					setCards((prevCards) => {
-						console.log(prevCards);
 						return prevCards.map((card) => {
 							if (card.suit === choiceOne.suit) {
 								return { ...card, isMatched: true, src: null };
@@ -65,7 +61,6 @@ export default function Board() {
 					choiceOne.color === choiceTwo.color &&
 					choiceOne.rank === choiceTwo.rank
 				) {
-					// eslint-disable-next-line
 					setCards((prevCards) => {
 						return prevCards.map((card) => {
 							if (
