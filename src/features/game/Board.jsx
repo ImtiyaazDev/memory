@@ -9,6 +9,8 @@ import SingleCard from "./SingleCard";
 
 export default function Board() {
 	const [cards, setCards] = useState([]);
+	const [choiceOne, setChoiceOne] = useState(null);
+	const [choiceTwo, setChoiceTwo] = useState(null);
 
 	// shuffle cards
 	function shuffleCards() {
@@ -16,7 +18,14 @@ export default function Board() {
 			.sort(() => Math.random() - 0.5)
 			.map((card) => ({ ...card }));
 
+		setChoiceOne(null);
+		setChoiceTwo(null);
+
 		setCards(shuffledCards);
+	}
+
+	function handleCardChoice(card) {
+		choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
 	}
 
 	useEffect(function () {
@@ -62,6 +71,7 @@ export default function Board() {
 						<SingleCard
 							card={card}
 							key={`${card.rank} - ${card.suit}`}
+							handleCardChoice={handleCardChoice}
 						/>
 					))}
 				</div>
