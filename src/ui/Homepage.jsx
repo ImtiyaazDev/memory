@@ -29,6 +29,7 @@ export default function Homepage() {
 				<Button
 					type="danger"
 					onClick={handleExit}
+					disabled={isExiting}
 				>
 					Exit Game
 				</Button>
@@ -40,7 +41,7 @@ export default function Homepage() {
 						Are you ready to play?
 					</h1>
 
-					<div className="flex h-1/2 w-1/2 items-center gap-9 px-4 py-2">
+					<div className="flex h-1/2 w-7/12 items-center gap-9 px-4 py-2">
 						{isActive && <Modal />}
 					</div>
 
@@ -53,7 +54,7 @@ export default function Homepage() {
 						</Button>
 					)}
 					{isExiting && (
-						<p className="text-lg font-semibold text-white">
+						<p className="text-lg font-semibold text-white mt-14">
 							Can&apos;t leave the game without having some fun first 😁
 						</p>
 					)}
