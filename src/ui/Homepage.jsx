@@ -35,7 +35,7 @@ export default function Homepage() {
 			</Header>
 
 			<main className="z-50">
-				<div className="flex h-full flex-col items-center justify-start gap-6">
+				<div className="flex h-[75vh] flex-col items-center justify-evenly gap-6">
 					<h1 className="text-5xl font-bold text-white">
 						Are you ready to play?
 					</h1>
