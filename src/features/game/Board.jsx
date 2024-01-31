@@ -105,7 +105,7 @@ export default function Board() {
 
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
 				{/* Player 1 - Left side */}
-				<div className="flex h-1/2 flex-col gap-4 self-center text-center ">
+				<div className="flex h-1/2 flex-col gap-4 self-center text-center">
 					<div className="flex flex-col items-center gap-6 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 py-6">
 						<PlayerBalloons />
 						<div className="space-y-3">
@@ -119,8 +119,7 @@ export default function Board() {
 				</div>
 
 				{/* Main game play */}
-				<div className="grid grid-cols-9 grid-rows-6 gap-y-2 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
-					{/* card */}
+				<div className="grid grid-cols-9 grid-rows-6 justify-items-center gap-y-4 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
 					{cards.map((card) => (
 						<SingleCard
 							card={card}
