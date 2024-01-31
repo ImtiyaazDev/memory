@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+	.rotate-y-back{
+		transform: rotateY(90deg);
+	}
+
+	.rotate-y-front {
+		transform: rotateY(0deg);
+	}
+
 	.radial-lg {
 		background: rgb(62, 146, 206);
 		background: radial-gradient(
