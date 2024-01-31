@@ -11,6 +11,7 @@ export default function Board() {
 	const [cards, setCards] = useState([]);
 	const [choiceOne, setChoiceOne] = useState(null);
 	const [choiceTwo, setChoiceTwo] = useState(null);
+	const [disableCard, setDisableCard] = useState(false);
 
 	// shuffle cards
 	function shuffleCards() {
@@ -78,6 +79,7 @@ export default function Board() {
 	function resetChoice() {
 		setChoiceOne(null);
 		setChoiceTwo(null);
+		setDisableCard(false);
 	}
 
 	useEffect(function () {
@@ -127,6 +129,7 @@ export default function Board() {
 							flipped={
 								card === choiceOne || card === choiceTwo || card.isMatched
 							}
+							disableCard={disableCard}
 						/>
 					))}
 				</div>
