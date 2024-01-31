@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Blur from "./Blur";
 import Button from "./Button";
+import Header from "./Header";
 import Modal from "./Modal";
 
 export default function Homepage() {
@@ -14,15 +15,12 @@ export default function Homepage() {
 			<Blur type="normalLg" />
 			<Blur type="normalSm" />
 
-			<header className="ml-auto flex items-center px-6 py-3">
+			<Header>
 				<Button type="danger">Exit Game</Button>
-			</header>
+			</Header>
 
 			<main className="z-50">
 				<div className="flex h-full flex-col items-center justify-start gap-6">
-					<h2 className="z-50 self-auto text-4xl font-semibold text-white">
-						Memory
-					</h2>
 					<h1 className="text-5xl font-bold text-white">
 						Are you ready to play?
 					</h1>

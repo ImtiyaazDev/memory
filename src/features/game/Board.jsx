@@ -8,6 +8,7 @@ import PlayerBox from "../player/PlayerBox";
 import PlayerBalloons from "./../player/PlayerBalloons";
 import PlayerRocket from "./../player/PlayerRocket";
 import { deck } from "./Deck";
+import Header from "./../../ui/Header";
 import SingleCard from "./SingleCard";
 
 export default function Board() {
@@ -103,20 +104,15 @@ export default function Board() {
 			<Blur type="normalLg" />
 			<Blur type="normalSm" />
 
-			<header className="grid grid-cols-12 items-center justify-between px-6 py-3">
-				<h2 className="z-50 col-start-6 col-end-8 row-span-full self-start justify-self-center text-4xl font-semibold text-white">
-					Memory
-				</h2>
-				<div className="z-50 col-start-10 col-end-13 row-span-full space-x-4 justify-self-end">
-					<Button type="warning">Restare Game</Button>
-					<Button
-						type="danger"
-						onClick={handleExit}
-					>
-						Exit Game
-					</Button>
-				</div>
-			</header>
+			<Header>
+				<Button type="warning">Restare Game</Button>
+				<Button
+					type="danger"
+					onClick={handleExit}
+				>
+					Exit Game
+				</Button>
+			</Header>
 
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
 				<PlayerBox
