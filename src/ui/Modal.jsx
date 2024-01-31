@@ -1,43 +1,43 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-import InputPlayer from "../features/player/InputPlayer";
 import PlayerBalloons from "../features/player/PlayerBalloons";
 import PlayerRocket from "../features/player/PlayerRocket";
+import Input from "./../ui/Input";
 import Button from "./Button";
 
 export default function Modal() {
-	const navigate = useNavigate();
-
-	function handleClick() {
-		navigate("/game-play");
-	}
+	const [playerOneName, setPlayerOneName] = useState("");
+	const [playerTwoName, setPlayerTwoName] = useState("");
 
 	return (
 		<section className="flex h-full w-full flex-col items-center gap-3">
-			<div className="flex h-full w-full items-center gap-4 px-4 py-2">
-				<div className="flex h-full w-1/2 flex-col gap-5 px-4 py-2">
-					<PlayerBalloons styles="self-center" />
-					<InputPlayer
+			<div className="flex w-full items-center justify-around px-4 py-2">
+				<PlayerRocket styles="self-end" />
+				<PlayerBalloons styles="self-center" />
+			</div>
+
+			<form className="flex h-full w-full flex-col items-center gap-5 px-4 py-2">
+				<div className="flex w-full justify-between gap-5">
+					<Input
 						placeholder="Name of Player 1"
 						id={1}
+						name={playerOneName}
+						setName={setPlayerOneName}
 					/>
-				</div>
-
-				<div className="flex h-full w-1/2 flex-col gap-5 px-4 py-2">
-					<PlayerRocket styles="self-center" />
-					<InputPlayer
+					<Input
 						placeholder="Name of Player 2"
 						id={2}
+						name={playerTwoName}
+						setName={setPlayerTwoName}
 					/>
 				</div>
-			</div>
-			<Button
-				type="primary"
-				style="w-44"
-				onClick={handleClick}
-			>
-				Let&apos;s Play
-			</Button>
+				<Button
+					type="primary"
+					style="w-44"
+				>
+					Let&apos;s Play
+				</Button>
+			</form>
 		</section>
 	);
 }
