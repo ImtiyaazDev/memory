@@ -1,6 +1,6 @@
 export default function Button({ children, disabled, onClick, type, style }) {
 	const base =
-		"rounded-lg text-white transition-all duration-300 easi-in outline-0 focus:ring-4";
+		"rounded-lg text-white transition-all duration-300 ease-in outline-0 focus:ring-4";
 
 	const styles = {
 		primary: `${base} bg-green-specno px-10 py-3 text-xl font-semibold hover:bg-green-500 focus:ring-green-500`,
