@@ -15,7 +15,7 @@ export default function SingleCard({
 				<img
 					src={card.src}
 					alt={`${card.rank} of ${card.suit}`}
-					className={`${flipped ? "rotate-y-front delay-200" : "rotate-y-back"} absolute block w-5/6 transition-transform ease-in`}
+					className={`${flipped ? "rotate-y-front delay-200" : "rotate-y-back"} ${card.src ? "block" : "opacity-0 transition-opacity delay-700 duration-300"} absolute w-5/6 transition-transform ease-in`}
 				/>
 				{/* Back card */}
 				<img

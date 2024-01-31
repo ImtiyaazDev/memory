@@ -138,7 +138,7 @@ export default function Board() {
 				<PlayerBox
 					playerIcon={<PlayerRocket />}
 					playerNumber={2}
-				/>		
+				/>
 			</main>
 		</div>
 	);
