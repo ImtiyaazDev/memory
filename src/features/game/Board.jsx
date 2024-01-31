@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
@@ -12,6 +13,11 @@ export default function Board() {
 	const [choiceOne, setChoiceOne] = useState(null);
 	const [choiceTwo, setChoiceTwo] = useState(null);
 	const [disableCard, setDisableCard] = useState(false);
+	const navigate = useNavigate();
+
+	function handleExit() {
+		navigate("/");
+	}
 
 	// shuffle cards
 	function shuffleCards() {
@@ -100,7 +106,7 @@ export default function Board() {
 					</h2>
 				</div>
 				<Button type="warning">Restare Game</Button>
-				<Button type="danger">Exit Game</Button>
+				<Button type="danger" onClick={handleExit}>Exit Game</Button>
 			</header>
 
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
