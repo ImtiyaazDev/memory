@@ -68,7 +68,7 @@ export default function Board() {
 								card.color === choiceOne.color &&
 								card.rank === choiceOne.rank
 							) {
-								return { ...card, isMatched: true };
+								return { ...card, isMatched: true, src: null };
 							} else {
 								return card;
 							}
