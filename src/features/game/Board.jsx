@@ -28,6 +28,58 @@ export default function Board() {
 		choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
 	}
 
+	// Compare two cards
+	useEffect(
+		function () {
+			if (choiceOne && choiceTwo) {
+				setDisableCard(true);
+				if (
+					choiceOne.src.split("/").includes("joker") &&
+					choiceTwo.src.split("/").includes("joker")
+				) {
+					setCards((prevCards) => {
+						console.log(prevCards);
+						return prevCards.map((card) => {
+							if (card.suit === choiceOne.suit) {
+								return { ...card, isMatched: true };
+							} else {
+								return card;
+							}
+						});
+					});
+				}
+
+				if (
+					choiceOne.color === choiceTwo.color &&
+					choiceOne.rank === choiceTwo.rank
+				) {
+					// eslint-disable-next-line
+					setCards((prevCards) => {
+						return prevCards.map((card) => {
+							if (
+								card.color === choiceOne.color &&
+								card.rank === choiceOne.rank
+							) {
+								return { ...card, isMatched: true };
+							} else {
+								return card;
+							}
+						});
+					});
+					resetChoice();
+				} else {
+					setTimeout(() => resetChoice(), 1000);
+				}
+			}
+		},
+		[choiceOne, choiceTwo]
+	);
+
+	function resetChoice() {
+		setChoiceOne(null);
+		setChoiceTwo(null);
+	}
+
 	useEffect(function () {
 		shuffleCards();
 	}, []);
@@ -72,6 +124,9 @@ export default function Board() {
 							card={card}
 							key={`${card.rank} - ${card.suit}`}
 							handleCardChoice={handleCardChoice}
+							flipped={
+								card === choiceOne || card === choiceTwo || card.isMatched
+							}
 						/>
 					))}
 				</div>
