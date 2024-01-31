@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
+import PlayerBox from "../player/PlayerBox";
 import PlayerBalloons from "./../player/PlayerBalloons";
 import PlayerRocket from "./../player/PlayerRocket";
 import { deck } from "./Deck";
@@ -106,24 +107,19 @@ export default function Board() {
 					</h2>
 				</div>
 				<Button type="warning">Restare Game</Button>
-				<Button type="danger" onClick={handleExit}>Exit Game</Button>
+				<Button
+					type="danger"
+					onClick={handleExit}
+				>
+					Exit Game
+				</Button>
 			</header>
 
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
-				{/* Player 1 - Left side */}
-				<div className="flex h-1/2 flex-col gap-4 self-center text-center">
-					<div className="flex flex-col items-center gap-6 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 py-6">
-						<PlayerBalloons />
-						<div className="space-y-3">
-							<p className="text-xl font-semibold text-white">Player 1</p>
-							<p className="text-2xl font-semibold text-white">Score: 10</p>
-						</div>
-					</div>
-					<p className="bg-green-specno rounded-lg py-3 text-xl font-bold text-white">
-						It&apos;s Your Turn
-					</p>
-				</div>
-
+				<PlayerBox
+					playerIcon={<PlayerBalloons />}
+					playerNumber={1}
+				/>
 				{/* Main game play */}
 				<div className="grid grid-cols-9 grid-rows-6 justify-items-center gap-y-4 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
 					{cards.map((card) => (
@@ -139,19 +135,10 @@ export default function Board() {
 					))}
 				</div>
 
-				{/* Player 2 - Right side */}
-				<div className="flex h-1/2 flex-col gap-4 self-center text-center">
-					<div className="flex flex-col items-center gap-6 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 py-6">
-						<PlayerRocket />
-						<div className="space-y-3">
-							<p className="text-xl font-semibold text-white">Player 2</p>
-							<p className="text-2xl font-semibold text-white">Score: 10</p>
-						</div>
-					</div>
-					<p className="text-blue-specnoNormal rounded-lg bg-white py-3 text-xl font-bold">
-						It&apos;s Your Turn
-					</p>
-				</div>
+				<PlayerBox
+					playerIcon={<PlayerRocket />}
+					playerNumber={2}
+				/>		
 			</main>
 		</div>
 	);
