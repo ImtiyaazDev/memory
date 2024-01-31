@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Blur from "../../ui/Blur";
@@ -15,6 +16,8 @@ export default function Board() {
 	const [choiceTwo, setChoiceTwo] = useState(null);
 	const [disableCard, setDisableCard] = useState(false);
 	const navigate = useNavigate();
+	const name = useSelector((store) => store.player);
+	console.log(name);
 
 	function handleExit() {
 		navigate("/");
@@ -100,19 +103,19 @@ export default function Board() {
 			<Blur type="normalLg" />
 			<Blur type="normalSm" />
 
-			<header className="ml-auto flex items-center gap-5 px-6 py-3">
-				<div className="flex h-full flex-col items-center justify-start gap-6">
-					<h2 className="z-50 self-auto text-4xl font-semibold text-white">
-						Memory
-					</h2>
+			<header className="grid grid-cols-12 items-center justify-between px-6 py-3">
+				<h2 className="z-50 col-start-6 col-end-8 row-span-full self-start justify-self-center text-4xl font-semibold text-white">
+					Memory
+				</h2>
+				<div className="z-50 col-start-10 col-end-13 row-span-full space-x-4 justify-self-end">
+					<Button type="warning">Restare Game</Button>
+					<Button
+						type="danger"
+						onClick={handleExit}
+					>
+						Exit Game
+					</Button>
 				</div>
-				<Button type="warning">Restare Game</Button>
-				<Button
-					type="danger"
-					onClick={handleExit}
-				>
-					Exit Game
-				</Button>
 			</header>
 
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
@@ -135,10 +138,7 @@ export default function Board() {
 					))}
 				</div>
 
-				<PlayerBox
-					playerIcon={<PlayerRocket />}
-					playerNumber={2}
-				/>
+				<PlayerBox playerIcon={<PlayerRocket />} />
 			</main>
 		</div>
 	);
