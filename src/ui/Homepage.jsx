@@ -7,6 +7,16 @@ import Modal from "./Modal";
 
 export default function Homepage() {
 	const [isActive, setIsActive] = useState(false);
+	const [isExiting, setIsExiting] = useState(false);
+
+	function handleStart() {
+		setIsActive((show) => !show);
+		setIsExiting(false);
+	}
+
+	function handleExit() {
+		setIsExiting((exit) => !exit);
+	}
 
 	return (
 		<div className="radial-lg relative grid h-screen w-screen grid-rows-[80px_1fr] overflow-hidden">
@@ -16,7 +26,12 @@ export default function Homepage() {
 			<Blur type="normalSm" />
 
 			<Header>
-				<Button type="danger">Exit Game</Button>
+				<Button
+					type="danger"
+					onClick={handleExit}
+				>
+					Exit Game
+				</Button>
 			</Header>
 
 			<main className="z-50">
@@ -32,10 +47,15 @@ export default function Homepage() {
 					{!isActive && (
 						<Button
 							type="primary"
-							onClick={() => setIsActive((show) => !show)}
+							onClick={handleStart}
 						>
 							Start Here
 						</Button>
+					)}
+					{isExiting && (
+						<p className="text-lg font-semibold text-white">
+							Can&apos;t leave the game without having some fun first 😁
+						</p>
 					)}
 				</div>
 			</main>
