@@ -1,10 +1,28 @@
+import { useEffect, useState } from "react";
+
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
 import PlayerBalloons from "./../player/PlayerBalloons";
 import PlayerRocket from "./../player/PlayerRocket";
 import { deck } from "./Deck";
+import SingleCard from "./SingleCard";
 
 export default function Board() {
+	const [cards, setCards] = useState([]);
+
+	// shuffle cards
+	function shuffleCards() {
+		const shuffledCards = [...deck]
+			.sort(() => Math.random() - 0.5)
+			.map((card) => ({ ...card }));
+
+		setCards(shuffledCards);
+	}
+
+	useEffect(function () {
+		shuffleCards();
+	}, []);
+
 	return (
 		<div className="radial-lg relative grid h-screen w-screen grid-rows-[80px_1fr] overflow-hidden">
 			<Blur type="large" />
@@ -24,7 +42,7 @@ export default function Board() {
 
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
 				{/* Player 1 - Left side */}
-				<div className="flex h-1/2 flex-col gap-4 text-center">
+				<div className="flex h-1/2 flex-col gap-4 self-center text-center ">
 					<div className="flex flex-col items-center gap-6 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 py-6">
 						<PlayerBalloons />
 						<div className="space-y-3">
@@ -38,21 +56,18 @@ export default function Board() {
 				</div>
 
 				{/* Main game play */}
-				<div className="grid grid-cols-9 grid-rows-6 self-auto rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
-					<div>
-						<img
-							src={deck[0].src}
-							alt=""
+				<div className="grid grid-cols-9 grid-rows-6 gap-y-2 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
+					{/* card */}
+					{cards.map((card) => (
+						<SingleCard
+							card={card}
+							key={`${card.rank} - ${card.suit}`}
 						/>
-						<img
-							src="/src/assets/cards/Card_Back.png"
-							alt=""
-						/>
-					</div>
+					))}
 				</div>
 
 				{/* Player 2 - Right side */}
-				<div className="flex h-1/2 flex-col gap-4 text-center">
+				<div className="flex h-1/2 flex-col gap-4 self-center text-center">
 					<div className="flex flex-col items-center gap-6 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 py-6">
 						<PlayerRocket />
 						<div className="space-y-3">
