@@ -14,7 +14,8 @@ const initialState = {
 			currentTurn: false,
 			id: 2
 		}
-	]
+	],
+	currentPlayer: 1
 };
 
 const playerSlice = createSlice({
@@ -24,11 +25,15 @@ const playerSlice = createSlice({
 		updateName: (state, action) => {
 			const { playerId, name } = action.payload;
 			state.players.find((player) => player.id === playerId).name = name;
+		},
+		updatePlayerTurn: (state, action) => {
+			state.currentPlayer = action.payload;
 		}
 	}
 });
 
-export const { updateName } = playerSlice.actions;
+export const { updateName, updatePlayerTurn } = playerSlice.actions;
 export default playerSlice.reducer;
 
 export const getPlayers = (state) => state.player.players;
+export const getCurrentTurn = (state) => state.player;

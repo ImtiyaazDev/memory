@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
 import PlayerBox from "../player/PlayerBox";
+import { updatePlayerTurn, getCurrentTurn } from "../player/playerSlice";
 import Header from "./../../ui/Header";
 import PlayerBalloons from "./../player/PlayerBalloons";
 import PlayerRocket from "./../player/PlayerRocket";
@@ -16,6 +18,8 @@ export default function Board() {
 	const [choiceTwo, setChoiceTwo] = useState(null);
 	const [disableCard, setDisableCard] = useState(false);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { currentPlayer } = useSelector(getCurrentTurn);
 
 	function handleExit() {
 		navigate("/");
@@ -37,11 +41,28 @@ export default function Board() {
 		choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
 	}
 
+	const handleUpdatePlayerTurn = useCallback(() => {
+		const nextPlayer = currentPlayer === 1 ? 2 : 1;
+		dispatch(updatePlayerTurn(nextPlayer));
+	}, [currentPlayer, dispatch]);
+
 	// Compare two cards
 	useEffect(
 		function () {
 			if (choiceOne && choiceTwo) {
 				setDisableCard(true);
+				// Incorrect Choice
+				if (
+					!(
+						choiceOne.src.split("/").includes("joker") &&
+						choiceTwo.src.split("/").includes("joker")
+					) &&
+					(choiceOne.color !== choiceTwo.color ||
+						choiceOne.rank !== choiceTwo.rank)
+				) {
+					setTimeout(handleUpdatePlayerTurn, 500);
+				}
+
 				if (
 					choiceOne.src.split("/").includes("joker") &&
 					choiceTwo.src.split("/").includes("joker")
@@ -113,7 +134,13 @@ export default function Board() {
 				<PlayerBox
 					playerIcon={<PlayerBalloons />}
 					id={1}
-				/>
+				>
+					{currentPlayer === 1 && (
+						<p className="bg-green-specno rounded-lg py-3 text-xl font-bold text-white">
+							It&apos;s Your Turn
+						</p>
+					)}
+				</PlayerBox>
 				<div className="grid grid-cols-9 grid-rows-6 justify-items-center gap-y-4 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
 					{cards.map((card) => (
 						<SingleCard
@@ -128,7 +155,16 @@ export default function Board() {
 					))}
 				</div>
 
-				<PlayerBox playerIcon={<PlayerRocket />} />
+				<PlayerBox
+					playerIcon={<PlayerRocket />}
+					id={2}
+				>
+					{currentPlayer === 2 && (
+						<p className="text-blue-specnoNormal rounded-lg bg-white py-3 text-xl font-bold">
+							It&apos;s Your Turn
+						</p>
+					)}
+				</PlayerBox>
 			</main>
 		</div>
 	);
