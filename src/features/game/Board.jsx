@@ -8,7 +8,8 @@ import PlayerBox from "../player/PlayerBox";
 import {
 	updatePlayerTurn,
 	getCurrentTurn,
-	updateScore
+	updateScore,
+	resetScore
 } from "../player/playerSlice";
 import Header from "./../../ui/Header";
 import PlayerBalloons from "./../player/PlayerBalloons";
@@ -123,6 +124,15 @@ export default function Board() {
 		shuffleCards();
 	}, []);
 
+	function handleReset() {
+		shuffleCards();
+		setChoiceOne(null);
+		setChoiceTwo(null);
+		setDisableCard(false);
+		handleUpdatePlayerTurn();
+		dispatch(resetScore());
+	}
+
 	return (
 		<div className="radial-lg relative grid h-screen w-screen grid-rows-[80px_1fr] overflow-hidden">
 			<Blur type="large" />
@@ -131,7 +141,12 @@ export default function Board() {
 			<Blur type="normalSm" />
 
 			<Header>
-				<Button type="warning">Restart Game</Button>
+				<Button
+					type="warning"
+					onClick={handleReset}
+				>
+					Restart Game
+				</Button>
 				<Button
 					type="danger"
 					onClick={handleExit}
