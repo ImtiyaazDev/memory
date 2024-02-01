@@ -59,7 +59,7 @@ export default function Game() {
 	}, [dispatch, currentPlayer]);
 
 	function handleEngGame() {
-		if (playerOneScore + (playerTwoScore % 54) === 0) {
+		if (playerOneScore + playerTwoScore === 54) {
 			navigate("/victory");
 		}
 	}
@@ -80,7 +80,7 @@ export default function Game() {
 				) {
 					setTimeout(handleUpdatePlayerTurn, 500);
 				}
-				// FIXME: Refactor into more reusable - duplicate code
+				
 				if (
 					choiceOne.src.split("/").includes("joker") &&
 					choiceTwo.src.split("/").includes("joker")
