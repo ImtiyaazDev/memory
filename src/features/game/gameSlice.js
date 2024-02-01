@@ -31,7 +31,7 @@ const gameSlice = createSlice({
 			const { playerId } = action.payload;
 			const player = state.players.find((player) => player.id === playerId);
 			if (player) {
-				player.score = player.score + 1 / 2;
+				player.score = player.score + 2;
 			}
 		},
 		resetScore: (state) => {
