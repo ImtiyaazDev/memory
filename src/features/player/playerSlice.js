@@ -4,12 +4,12 @@ const initialState = {
 	players: [
 		{
 			name: "",
-			score: 5,
+			score: 0,
 			id: 1
 		},
 		{
 			name: "",
-			score: 3,
+			score: 0,
 			id: 2
 		}
 	],
