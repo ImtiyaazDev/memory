@@ -4,20 +4,21 @@ import { useNavigate } from "react-router-dom";
 
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
+import Header from "../../ui/Header";
+import PlayerBalloons from "../player/PlayerBalloons";
 import PlayerBox from "../player/PlayerBox";
+import PlayerRocket from "../player/PlayerRocket";
+import { deck } from "./Deck";
+import SingleCard from "./SingleCard";
 import {
 	updatePlayerTurn,
 	getCurrentTurn,
 	updateScore,
-	resetScore
-} from "../player/playerSlice";
-import Header from "./../../ui/Header";
-import PlayerBalloons from "./../player/PlayerBalloons";
-import PlayerRocket from "./../player/PlayerRocket";
-import { deck } from "./Deck";
-import SingleCard from "./SingleCard";
+	resetScore,
+	getPlayerScore
+} from "./gameSlice";
 
-export default function Board() {
+export default function Game() {
 	const [cards, setCards] = useState([]);
 	const [choiceOne, setChoiceOne] = useState(null);
 	const [choiceTwo, setChoiceTwo] = useState(null);
@@ -25,6 +26,8 @@ export default function Board() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { currentPlayer } = useSelector(getCurrentTurn);
+	const [playerOneScore, playerTwoScore] = useSelector(getPlayerScore);
+	console.log(playerOneScore);
 
 	function handleExit() {
 		navigate("/");
@@ -54,6 +57,12 @@ export default function Board() {
 	const handleUpdateScore = useCallback(() => {
 		dispatch(updateScore({ playerId: currentPlayer }));
 	}, [dispatch, currentPlayer]);
+
+	function handleEngGame() {
+		if (playerOneScore + (playerTwoScore % 54) === 0) {
+			navigate("/victory");
+		}
+	}
 
 	// Compare two cards
 	useEffect(
@@ -106,6 +115,7 @@ export default function Board() {
 						});
 					});
 					resetChoice();
+					handleEngGame();
 				} else {
 					setTimeout(() => resetChoice(), 1000);
 				}

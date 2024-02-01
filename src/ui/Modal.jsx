@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { updateName, updatePlayerTurn } from "../features/game/gameSlice";
 import PlayerBalloons from "../features/player/PlayerBalloons";
 import PlayerRocket from "../features/player/PlayerRocket";
-import { updateName, updatePlayerTurn } from "./../features/player/playerSlice";
 import Button from "./Button";
 
 export default function Modal() {

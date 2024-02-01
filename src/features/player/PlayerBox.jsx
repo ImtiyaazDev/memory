@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { getPlayers, getPlayerScore } from "./playerSlice";
+import { getPlayers, getPlayerScore } from "../game/gameSlice";
 
 export default function PlayerBox({ playerIcon, id, children }) {
 	const [playerOne, playerTwo] = useSelector(getPlayers);
