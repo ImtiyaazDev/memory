@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 import { getPlayers } from "./playerSlice";
 
-export default function PlayerBox({ playerIcon, id }) {
+export default function PlayerBox({ playerIcon, id, children }) {
 	const [playerOne, playerTwo] = useSelector(getPlayers);
 
 	return (
@@ -16,11 +16,7 @@ export default function PlayerBox({ playerIcon, id }) {
 					<p className="text-2xl font-semibold text-white">Score: 10</p>
 				</div>
 			</div>
-			<p
-				className={`${id === 1 ? "bg-green-specno text-white" : "text-blue-specnoNormal bg-white"} rounded-lg py-3 text-xl font-bold`}
-			>
-				It&apos;s Your Turn
-			</p>
+			{children}
 		</div>
 	);
 }
