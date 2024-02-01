@@ -131,7 +131,7 @@ export default function Board() {
 			<Blur type="normalSm" />
 
 			<Header>
-				<Button type="warning">Restare Game</Button>
+				<Button type="warning">Restart Game</Button>
 				<Button
 					type="danger"
 					onClick={handleExit}
