@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import PlayerBalloons from "../features/player/PlayerBalloons";
 import PlayerRocket from "../features/player/PlayerRocket";
-import { updateName } from "./../features/player/playerSlice";
+import { updateName, updatePlayerTurn } from "./../features/player/playerSlice";
 import Button from "./Button";
 
 export default function Modal() {
@@ -26,6 +26,7 @@ export default function Modal() {
 		if (!playerOneName || !playerTwoName) return;
 		dispatch(updateName({ playerId: 1, name: playerOneName }));
 		dispatch(updateName({ playerId: 2, name: playerTwoName }));
+		dispatch(updatePlayerTurn(1));
 		navigate("/game-play");
 	}
 
