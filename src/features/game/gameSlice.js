@@ -16,8 +16,8 @@ const initialState = {
 	currentPlayer: 1
 };
 
-const playerSlice = createSlice({
-	name: "player",
+const gameSlice = createSlice({
+	name: "game",
 	initialState,
 	reducers: {
 		updateName: (state, action) => {
@@ -41,10 +41,10 @@ const playerSlice = createSlice({
 });
 
 export const { updateName, updatePlayerTurn, updateScore, resetScore } =
-	playerSlice.actions;
-export default playerSlice.reducer;
+	gameSlice.actions;
+export default gameSlice.reducer;
 
-export const getPlayers = (state) => state.player.players;
-export const getCurrentTurn = (state) => state.player;
+export const getPlayers = (state) => state.game.players;
+export const getCurrentTurn = (state) => state.game;
 export const getPlayerScore = (state) =>
-	state.player.players.map((player) => player.score);
+	state.game.players.map((player) => player.score);
