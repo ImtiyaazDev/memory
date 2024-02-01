@@ -4,14 +4,12 @@ const initialState = {
 	players: [
 		{
 			name: "",
-			matchedPairs: 0,
-			currentTurn: true,
+			score: 5,
 			id: 1
 		},
 		{
 			name: "",
-			matchPairs: 0,
-			currentTurn: false,
+			score: 3,
 			id: 2
 		}
 	],
@@ -28,12 +26,22 @@ const playerSlice = createSlice({
 		},
 		updatePlayerTurn: (state, action) => {
 			state.currentPlayer = action.payload;
+		},
+		updateScore: (state, action) => {
+			const { playerId } = action.payload;
+			const player = state.players.find((player) => player.id === playerId);
+			if (player) {
+				player.score += 1;
+			}
 		}
 	}
 });
 
-export const { updateName, updatePlayerTurn } = playerSlice.actions;
+export const { updateName, updatePlayerTurn, updateScore } =
+	playerSlice.actions;
 export default playerSlice.reducer;
 
 export const getPlayers = (state) => state.player.players;
 export const getCurrentTurn = (state) => state.player;
+export const getPlayerScore = (state) =>
+	state.player.players.map((player) => player.score);
