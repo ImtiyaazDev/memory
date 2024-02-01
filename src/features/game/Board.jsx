@@ -112,7 +112,7 @@ export default function Board() {
 			<main className="z-50 grid h-full grid-cols-[240px_1fr_240px] content-center space-x-5 px-6">
 				<PlayerBox
 					playerIcon={<PlayerBalloons />}
-					playerNumber={1}
+					id={1}
 				/>
 				<div className="grid grid-cols-9 grid-rows-6 justify-items-center gap-y-4 rounded-lg bg-gradient-to-tl from-white/10 to-white/60 px-3 py-3">
 					{cards.map((card) => (
