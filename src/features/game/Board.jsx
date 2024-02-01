@@ -5,7 +5,11 @@ import { useNavigate } from "react-router-dom";
 import Blur from "../../ui/Blur";
 import Button from "../../ui/Button";
 import PlayerBox from "../player/PlayerBox";
-import { updatePlayerTurn, getCurrentTurn } from "../player/playerSlice";
+import {
+	updatePlayerTurn,
+	getCurrentTurn,
+	updateScore
+} from "../player/playerSlice";
 import Header from "./../../ui/Header";
 import PlayerBalloons from "./../player/PlayerBalloons";
 import PlayerRocket from "./../player/PlayerRocket";
@@ -46,6 +50,10 @@ export default function Board() {
 		dispatch(updatePlayerTurn(nextPlayer));
 	}, [currentPlayer, dispatch]);
 
+	const handleUpdateScore = useCallback(() => {
+		dispatch(updateScore({ playerId: currentPlayer }));
+	}, [dispatch, currentPlayer]);
+
 	// Compare two cards
 	useEffect(
 		function () {
@@ -62,7 +70,7 @@ export default function Board() {
 				) {
 					setTimeout(handleUpdatePlayerTurn, 500);
 				}
-
+				// FIXME: Refactor into more reusable - duplicate code
 				if (
 					choiceOne.src.split("/").includes("joker") &&
 					choiceTwo.src.split("/").includes("joker")
@@ -70,6 +78,7 @@ export default function Board() {
 					setCards((prevCards) => {
 						return prevCards.map((card) => {
 							if (card.suit === choiceOne.suit) {
+								handleUpdateScore();
 								return { ...card, isMatched: true, src: null };
 							} else {
 								return card;
@@ -88,6 +97,7 @@ export default function Board() {
 								card.color === choiceOne.color &&
 								card.rank === choiceOne.rank
 							) {
+								handleUpdateScore();
 								return { ...card, isMatched: true, src: null };
 							} else {
 								return card;
