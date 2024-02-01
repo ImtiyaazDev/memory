@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 
-import { getPlayers } from "./playerSlice";
+import { getPlayers, getPlayerScore } from "./playerSlice";
 
 export default function PlayerBox({ playerIcon, id, children }) {
 	const [playerOne, playerTwo] = useSelector(getPlayers);
+	const [playerOneScore, playerTwoScore] = useSelector(getPlayerScore);
 
 	return (
 		<div className="flex h-1/2 flex-col gap-4 self-center text-center">
@@ -13,7 +14,9 @@ export default function PlayerBox({ playerIcon, id, children }) {
 					<p className="text-xl font-semibold text-white">
 						{playerOne.id === id ? playerOne.name : playerTwo.name}
 					</p>
-					<p className="text-2xl font-semibold text-white">Score: 10</p>
+					<p className="text-2xl font-semibold text-white">
+						Score: {playerOne.id === id ? playerOneScore : playerTwoScore}
+					</p>
 				</div>
 			</div>
 			{children}
