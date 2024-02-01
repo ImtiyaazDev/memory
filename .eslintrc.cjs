@@ -18,7 +18,7 @@ module.exports = {
 		],
 		"no-var": "error",
 		"no-duplicate-imports": "error",
-		"arrow-body-style": ["error", "as-needed"],
+		"arrow-body-style": ["error", "off"],
 		"default-case": "error",
 		eqeqeq: "error",
 		"func-style": ["error", "declaration", { allowArrowFunctions: true }],
