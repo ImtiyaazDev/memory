@@ -33,11 +33,14 @@ const playerSlice = createSlice({
 			if (player) {
 				player.score += 1;
 			}
+		},
+		resetScore: (state) => {
+			state.players.forEach((player) => (player.score = 0));
 		}
 	}
 });
 
-export const { updateName, updatePlayerTurn, updateScore } =
+export const { updateName, updatePlayerTurn, updateScore, resetScore } =
 	playerSlice.actions;
 export default playerSlice.reducer;
 
