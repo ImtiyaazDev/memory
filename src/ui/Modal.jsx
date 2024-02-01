@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import PlayerBalloons from "../features/player/PlayerBalloons";
 import PlayerRocket from "../features/player/PlayerRocket";
 import { updateName } from "./../features/player/playerSlice";
-import Input from "./../ui/Input";
 import Button from "./Button";
 
 export default function Modal() {
@@ -56,16 +55,6 @@ export default function Modal() {
 						value={playerTwoName}
 						onChange={(e) => handleInputChange(2, e.target.value)}
 					/>
-					{/* <Input
-						placeholder="Player 1 Name"
-						name={playerOneName}
-						setName={(e) => handleInputChange(1, e.target.value)}
-					/> */}
-					{/* <Input
-						placeholder="Player 2 Name"
-						name={playerTwoName}
-						setName={(e) => setPlayerTwoName(e.target.value)}
-					/> */}
 				</div>
 				<Button
 					type="primary"
